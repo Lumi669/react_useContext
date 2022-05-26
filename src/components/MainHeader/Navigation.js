@@ -7,6 +7,7 @@ const Navigation = (props) => {
   return (
     <AuthContext.Consumer>
       {(ctx) => {
+        console.log("ctx = ", ctx);
         return (
           <nav className={classes.nav}>
             <ul>
@@ -22,7 +23,7 @@ const Navigation = (props) => {
               )}
               {ctx.isLoggedIn && (
                 <li>
-                  <button onClick={ctx.onLogout}>Logout</button>
+                  <button onClick={props.onLogout}>Logout</button>
                 </li>
               )}
             </ul>

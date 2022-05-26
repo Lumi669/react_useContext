@@ -7,6 +7,7 @@ import AuthContext from "./store/auth-context";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  console.log("isLoggedIn = ", isLoggedIn);
 
   useEffect(() => {
     const storedUserLoggedInInformation = localStorage.getItem("isLoggedIn");
@@ -29,7 +30,7 @@ function App() {
   };
 
   return (
-    <AuthContext.Provider>
+    <AuthContext.Provider value={{ isLoggedIn: isLoggedIn }}>
       <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
       <main>
         {!isLoggedIn && <Login onLogin={loginHandler} />}

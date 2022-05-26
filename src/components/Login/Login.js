@@ -33,6 +33,7 @@ const passwordReducer = (state, action) => {
 };
 
 const Login = (props) => {
+  console.log("props from Login.js = ", props);
   // before use useReducer(), use useState to manage state
   // const [enteredEmail, setEnteredEmail] = useState("");
   // const [emailIsValid, setEmailIsValid] = useState();
