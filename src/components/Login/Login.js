@@ -1,13 +1,11 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect, useReducer, useContext } from "react";
 
 import Card from "../UI/Card/Card";
 import classes from "./Login.module.css";
 import Button from "../UI/Button/Button";
+import AuthContext from "../../store/auth-context";
 
 const emailReducer = (state, action) => {
-  console.log("action.val = ", action.val);
-  console.log("state.isValid = ", state.isValid);
-
   if (action.type === "USER_INPUT") {
     return {
       value: action.val,
@@ -33,6 +31,11 @@ const passwordReducer = (state, action) => {
 };
 
 const Login = (props) => {
+  const authCtx = useContext(AuthContext);
+  console.log("authCtx = ", authCtx);
+  console.log("authCtx.onLogin = ", authCtx.onLogIn);
+  console.log("authCtx.onLogout = ", authCtx.onLogout);
+
   console.log("props from Login.js = ", props);
   // before use useReducer(), use useState to manage state
   // const [enteredEmail, setEnteredEmail] = useState("");
@@ -46,6 +49,7 @@ const Login = (props) => {
   console.log("formIsValid = ", formIsValid);
 
   // Now use useReducer() to manage state, put enteredEmail and emailIsValid two states into on useReducer() for management
+  // before use useState to manage enteredEmail and emailIsValid seperately
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
     value: "",
     isValid: false,
@@ -118,7 +122,7 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onLogin(emailState.value, passwordState.value);
+    authCtx.onLogIn(emailState.value, passwordState.value);
   };
 
   return (
