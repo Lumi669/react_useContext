@@ -1,14 +1,18 @@
 const Input = (props) => {
-  console.log("props from Input = ", props);
+  console.log("apple is good");
 
   return (
-    <input
-      type={props.type}
-      id={props.id}
-      value={props.value}
-      onChange={props.onChange}
-      onBlur={props.onBlur}
-    />
+    <div className={props.className}>
+      <label htmlFor={props.htmlFor}>E-Mail</label>
+
+      <input
+        type={props.type}
+        id={props.id}
+        value={props.value}
+        onChange={props.onChange}
+        onBlur={props.onBlur}
+      />
+    </div>
   );
 };
 
