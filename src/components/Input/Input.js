@@ -1,8 +1,14 @@
+import classes from "./Input.module.css";
+
 const Input = (props) => {
-  console.log("apple is good");
+  console.log("apple is good", props);
 
   return (
-    <div className={props.className}>
+    <div
+      className={`${classes.control} ${
+        props.validity === false ? classes.invalid : ""
+      }`}
+    >
       <label htmlFor={props.htmlFor}>E-Mail</label>
 
       <input
