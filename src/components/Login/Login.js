@@ -4,6 +4,7 @@ import Card from "../UI/Card/Card";
 import classes from "./Login.module.css";
 import Button from "../UI/Button/Button";
 import AuthContext from "../../store/auth-context";
+import Input from "../Input";
 
 const emailReducer = (state, action) => {
   if (action.type === "USER_INPUT") {
@@ -72,6 +73,7 @@ const Login = (props) => {
   //so below line 74 and 81 can use the new name directly (first use object destructuring of course).
   //before this modification, every time typing for email or password, useEffect will be executed once eventhough it is not need to execute yet.
   // now, only when the validity is changed, the useEffect will execute.
+  //Note: format of state is defined in the useReducer() function.
   const { isValid: emailIsValid } = emailState;
   const { isValid: passwordIsValid } = passwordState;
 
@@ -134,7 +136,15 @@ const Login = (props) => {
           }`}
         >
           <label htmlFor="email">E-Mail</label>
-          <input
+          {/* <input
+            type="email"
+            id="email"
+            value={emailState.value}
+            onChange={emailChangeHandler}
+            onBlur={validateEmailHandler}
+          /> */}
+
+          <Input
             type="email"
             id="email"
             value={emailState.value}
@@ -148,7 +158,15 @@ const Login = (props) => {
           }`}
         >
           <label htmlFor="password">Password</label>
-          <input
+          {/* <input
+            type="password"
+            id="password"
+            value={passwordState.value}
+            onChange={passwordChangeHandler}
+            onBlur={validatePasswordHandler}
+          /> */}
+
+          <Input
             type="password"
             id="password"
             value={passwordState.value}
