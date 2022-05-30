@@ -128,25 +128,21 @@ const Login = (props) => {
     <Card className={classes.login}>
       <form onSubmit={submitHandler}>
         <Input
-          // className={`${classes.control} ${
-          //   emailState.isValid === false ? classes.invalid : ""
-          // }`}
-          validity={emailState.isValid}
-          htmlFor="email"
-          type="email"
           id="email"
+          label="Email"
+          // htmlFor="email"    //Not needed, because in Input.js, can use just use id becaue htmlFor value should be id
+          isValid={emailState.isValid}
+          type="email"
           value={emailState.value}
           onChange={emailChangeHandler}
           onBlur={validateEmailHandler}
         />
         <Input
-          // className={`${classes.control} ${
-          //   passwordState.isValid === false ? classes.invalid : ""
-          // }`}
-          validity={passwordState.isValid}
-          htmlFor="password"
-          type="password"
           id="password"
+          label="Password"
+          // htmlFor="password"     //Not needed, because in Input.js, can use just use id becaue htmlFor value should be id
+          type="password"
+          isValid={passwordState.isValid}
           value={passwordState.value}
           onChange={passwordChangeHandler}
           onBlur={validatePasswordHandler}

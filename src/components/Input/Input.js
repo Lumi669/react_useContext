@@ -6,10 +6,10 @@ const Input = (props) => {
   return (
     <div
       className={`${classes.control} ${
-        props.validity === false ? classes.invalid : ""
+        props.isValid === false ? classes.invalid : ""
       }`}
     >
-      <label htmlFor={props.htmlFor}>E-Mail</label>
+      <label htmlFor={props.id}>{props.lable}</label>
 
       <input
         type={props.type}
@@ -31,3 +31,5 @@ export default Input;
 //However, if take line 6 off, in the browser both input fields emptied. In both cases(has type=... and not has type=...),
 //when click logIn button, the localStorage has key-value pair stored, and upon clicking logOut, the
 //localStorage key-value pair disapper.  But why without reassignment of type, browser wipe off both input fields???
+
+// Note: 3. htmlFor is the same as id !!!!!
